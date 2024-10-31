@@ -41,14 +41,17 @@ agrupado = df_edades.groupby('Quinquenio')['IDE_EDA_ANO'].count().reset_index(na
 # Ordenar el DataFrame por la columna "Quinquenio" de menor a mayor 
 agrupado['Quinquenio'] = pd.Categorical(agrupado['Quinquenio'], ordered=True, categories=sorted(agrupado['Quinquenio'].unique(), key=lambda x: int(x.split('-')[0]) if x != 'desconocido' else float('inf'))) 
 agrupado = agrupado.sort_values('Quinquenio')
-# Mostrar el resultado
-print(agrupado)
+
+colors = plt.cm.tab20(range(len(agrupado)))
+
 
 #Crear el gráfico 
 plt.figure(figsize=(10, 6)) 
-plt.bar(agrupado['Quinquenio'], agrupado['Count'], color='skyblue') 
+plt.bar(agrupado['Quinquenio'], agrupado['Count'], color=colors) 
 plt.xlabel('Quinquenio') 
 plt.ylabel('Count') 
 plt.title('Distribución de edades por quinquenios') 
 plt.xticks(rotation=90) 
 plt.show()
+
+
