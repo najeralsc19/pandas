@@ -18,6 +18,8 @@ data = data.dropna(subset=['LATITUD', 'LONGITUD'])
 
 
 gdf = gpd.read_file("E://files_pandas//sisver//muni_2018gw//muni_2018gw.shp")
+#municipios = ['Pachuca de Soto']
+
 municipio = gdf[gdf['NOM_MUN'] == 'Pachuca de Soto']
 
 # Crear el mapa centrado en la ubicación media de los datos
